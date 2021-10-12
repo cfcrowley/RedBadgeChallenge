@@ -33,6 +33,10 @@ namespace MagicCreator.Data
         }
 
         public DbSet<Card> Cards { get; set; }
+        public DbSet<Commander> Commanders { get; set; }
+        public DbSet<Standard> Standards { get; set; }
+        public DbSet<Legacy> Legacies { get; set; }
+        public DbSet<Modern> Modern { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
