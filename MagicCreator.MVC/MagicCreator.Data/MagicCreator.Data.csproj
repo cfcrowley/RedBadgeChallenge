@@ -59,6 +59,7 @@
     <Compile Include="Legacy.cs" />
     <Compile Include="Modern.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Standard.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
