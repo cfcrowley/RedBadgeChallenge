@@ -15,7 +15,6 @@ namespace MagicCreator.Data
         [Required]
         public string Name { get; set; }
         [Required]
-        [Display(Name = "Legacy Deck Id")]
         [ForeignKey(nameof(Legacy))]
         public int LegacyId { get; set; }
         [Required]
