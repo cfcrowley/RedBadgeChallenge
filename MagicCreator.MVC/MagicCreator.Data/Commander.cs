@@ -21,6 +21,8 @@ namespace MagicCreator.Data
         [Display(Name ="Commander for Deck")]
         public string General { get; set; }
         public string DeckStyle { get; set; }
+        [Display(Name ="Average ManaCurve")]
+        public double AvgRating { get; set; }
         public virtual List<Card> Cards { get; set; }
 
     }

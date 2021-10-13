@@ -62,7 +62,7 @@ namespace MagicCreator.Data
     {
         public IdentityUserRoleConfiguration()
         {
-            HasKey(iul => iul.UserId);
+            HasKey(iur => iur.UserId);
         }
     }
 }

@@ -59,11 +59,15 @@
     <Compile Include="Game.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Legacy.cs" />
+    <Compile Include="LegacyGame.cs" />
     <Compile Include="LegacySideboard.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Modern.cs" />
+    <Compile Include="ModernGame.cs" />
     <Compile Include="ModernSideboard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Standard.cs" />
+    <Compile Include="StandardGame.cs" />
     <Compile Include="StandardSideboard.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -7,18 +7,17 @@ using System.Threading.Tasks;
 
 namespace MagicCreator.Data
 {
-    public class CommanderGame
+    public class StandardGame
     {
         [Key]
         public int GameId { get; set; }
         [Required]
-        [Display(Name ="Your Deck ID")]
+        [Display(Name = "Your Deck ID")]
         public int DeckId { get; set; }
         [Required]
-        [Display(Name ="Enemy Deck ID")]
+        [Display(Name = "Enemy Deck ID")]
         public int EnemyID { get; set; }
         public string Result { get; set; }
-        public virtual Commander Commander { get; set; } 
-
+        public virtual Standard Standard { get; set; }
     }
 }
