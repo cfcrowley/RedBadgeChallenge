@@ -4,13 +4,18 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MagicCreator.Models;
+using MagicCreator.Services;
 
 namespace MagicCreator.MVC.Controllers
 {
     [Authorize]
     public class CardController : Controller
     {
-        
+        private CardServices CreateCardService()
+        {
+            var cardService = new CardServices();
+            return cardService;
+        }
 
         // GET : Card
         public ActionResult Index()
@@ -31,9 +36,16 @@ namespace MagicCreator.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(CardCreate model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                
+                return View(model);
+            }
+
+            var service = CreateCardService();
+
+            if (service.CreateCard(model))
+            {
+                return RedirectToAction("Index");
             }
             return View(model);
         }
