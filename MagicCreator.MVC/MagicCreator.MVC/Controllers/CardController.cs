@@ -10,17 +10,33 @@ namespace MagicCreator.MVC.Controllers
     [Authorize]
     public class CardController : Controller
     {
-        // GET: Card
+        
+
+        // GET : Card
         public ActionResult Index()
         {
             var model = new CardListItem[0];
             return View(model);
         }
 
-        // Get
+        // Get : Card
         public ActionResult Create()
         {
             return View();
         }
+
+        // Post : Song
+        [HttpPost]
+        [ActionName("Create")]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(CardCreate model)
+        {
+            if (ModelState.IsValid)
+            {
+                
+            }
+            return View(model);
+        }
+
     }
 }
