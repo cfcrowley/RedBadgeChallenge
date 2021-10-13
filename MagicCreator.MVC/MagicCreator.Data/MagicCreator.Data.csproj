@@ -59,6 +59,7 @@
     <Compile Include="Game.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Legacy.cs" />
+    <Compile Include="LegacySideboard.cs" />
     <Compile Include="Modern.cs" />
     <Compile Include="ModernSideboard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
