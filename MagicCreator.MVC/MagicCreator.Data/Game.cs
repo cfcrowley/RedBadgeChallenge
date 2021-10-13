@@ -18,7 +18,7 @@ namespace MagicCreator.Data
         [Display(Name ="Enemy Deck ID")]
         public int EnemyID { get; set; }
         public string Result { get; set; }
-        public virtual 
+        // public virtual 
 
     }
 }
