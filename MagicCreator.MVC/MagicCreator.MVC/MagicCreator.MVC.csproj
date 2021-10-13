@@ -235,6 +235,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Card\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -256,6 +257,14 @@
     <ProjectReference Include="..\MagicCreator.Data\MagicCreator.Data.csproj">
       <Project>{8B600986-33B2-452F-855F-91E68344CB3E}</Project>
       <Name>MagicCreator.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MagicCreator.Models\MagicCreator.Models.csproj">
+      <Project>{93addab8-575c-4160-b15b-ebe34af99cbe}</Project>
+      <Name>MagicCreator.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MagicCreator.Services\MagicCreator.Services.csproj">
+      <Project>{27809943-8f55-4a7e-b6f2-da73624ef79d}</Project>
+      <Name>MagicCreator.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

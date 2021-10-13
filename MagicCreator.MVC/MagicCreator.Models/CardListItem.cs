@@ -14,5 +14,6 @@ namespace MagicCreator.Models
         public string Name { get; set; }
         [Display(Name ="Card Type")]
         public string Type { get; set; }
+        public int ManaValue { get; set; }
     }
 }
