@@ -61,6 +61,10 @@
     <Compile Include="Legacy.cs" />
     <Compile Include="LegacyGame.cs" />
     <Compile Include="LegacySideboard.cs" />
+    <Compile Include="Migrations\202110132010331_initialmigration.cs" />
+    <Compile Include="Migrations\202110132010331_initialmigration.Designer.cs">
+      <DependentUpon>202110132010331_initialmigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Modern.cs" />
     <Compile Include="ModernGame.cs" />
@@ -73,6 +77,11 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202110132010331_initialmigration.resx">
+      <DependentUpon>202110132010331_initialmigration.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
