@@ -96,5 +96,26 @@ namespace MagicCreator.MVC.Controllers
             ModelState.AddModelError("", "Your note could not be updated.");
             return View(model);
         }
+
+        [ActionName("Delete")]
+        public ActionResult Delete(int id)
+        {
+            var svc = CreateCardService();
+            var model = svc.GetCardById(id);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletePost(int id)
+        {
+            var service = CreateCardService();
+
+            service.DeleteCard(id);
+
+            return RedirectToAction("Index");
+        }
     }
 }

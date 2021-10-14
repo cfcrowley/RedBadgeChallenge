@@ -71,5 +71,17 @@ namespace MagicCreator.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+
+        public bool DeleteCard(int cardId)
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.Cards.Single(e => e.CardId == cardId);
+
+                ctx.Cards.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }
