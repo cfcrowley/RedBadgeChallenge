@@ -46,7 +46,9 @@
     <Compile Include="Card\CardDetail.cs" />
     <Compile Include="Card\CardEdit.cs" />
     <Compile Include="Card\CardListItem.cs" />
+    <Compile Include="Legacy\LegacyCreate.cs" />
     <Compile Include="Modern\ModernCreate.cs" />
+    <Compile Include="Modern\ModernDetail.cs" />
     <Compile Include="Modern\ModernEdit.cs" />
     <Compile Include="Modern\ModernListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
