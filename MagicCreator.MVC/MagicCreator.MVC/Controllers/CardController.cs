@@ -97,7 +97,7 @@ namespace MagicCreator.MVC.Controllers
                 return RedirectToAction("Index");
             }
 
-            ModelState.AddModelError("", "Your note could not be updated.");
+            ModelState.AddModelError("", "Your card could not be updated.");
             return View(model);
         }
 

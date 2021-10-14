@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MagicCreator.Data;
+using MagicCreator.Models.Commander;
+using MagicCreator.Services;
 
 namespace MagicCreator.MVC.Controllers
 {
@@ -21,22 +23,18 @@ namespace MagicCreator.MVC.Controllers
         // GET: Commanders
         public ActionResult Index()
         {
-            return View(db.Commanders.ToList());
+            var service = CreateCommanderSerivces();
+            var model = service.GetCommanders();
+            return View(model);
         }
 
         // GET: Commanders/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Commander commander = db.Commanders.Find(id);
-            if (commander == null)
-            {
-                return HttpNotFound();
-            }
-            return View(commander);
+            var svc = CreateCommanderSerivces();
+            var model = svc.GetCommanderById(id);
+
+            return View(model);
         }
 
         // GET: Commanders/Create
@@ -49,32 +47,39 @@ namespace MagicCreator.MVC.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [ActionName("Create")]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CommanderId,Name,CardCount,General,DeckStyle,AvgRating")] Commander commander)
+        public ActionResult Create(CommanderCreate model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                db.Commanders.Add(commander);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                return View(model);
             }
 
-            return View(commander);
+            var service = CreateCommanderSerivces();
+
+            if (service.CreateCommander(model))
+            {
+                return RedirectToAction("Index");
+            }
+            return View(model);
         }
 
         // GET: Commanders/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Commander commander = db.Commanders.Find(id);
-            if (commander == null)
-            {
-                return HttpNotFound();
-            }
-            return View(commander);
+            var service = CreateCommanderSerivces();
+            var detail = service.GetCommanderById(id);
+            var model =
+                new CommanderEdit
+                {
+                    CommanderId = detail.CommanderId,
+                    Name = detail.Name,
+                    CardCount = detail.CardCount,
+                    General = detail.General,
+                    DeckStyle = detail.DeckStyle
+                };
+            return View(model);
         }
 
         // POST: Commanders/Edit/5
@@ -82,30 +87,35 @@ namespace MagicCreator.MVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CommanderId,Name,CardCount,General,DeckStyle,AvgRating")] Commander commander)
+        public ActionResult Edit(int id, CommanderEdit model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid) return View(model);
+
+            if(model.CommanderId != id)
             {
-                db.Entry(commander).State = EntityState.Modified;
-                db.SaveChanges();
+                ModelState.AddModelError("", "ID Mismatch");
+                return View(model);
+            }
+
+            var service = CreateCommanderSerivces();
+
+            if (service.UpdateCommander(model))
+            {
                 return RedirectToAction("Index");
             }
-            return View(commander);
+
+            ModelState.AddModelError("", "Your deck could not be updated");
+            return View(model);
         }
 
         // GET: Commanders/Delete/5
-        public ActionResult Delete(int? id)
+        [ActionName("Delete")]
+        public ActionResult Delete(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Commander commander = db.Commanders.Find(id);
-            if (commander == null)
-            {
-                return HttpNotFound();
-            }
-            return View(commander);
+            var svc = CreateCommanderSerivces();
+            var model = svc.GetCommanderById(id);
+
+            return View(model);
         }
 
         // POST: Commanders/Delete/5
@@ -113,19 +123,13 @@ namespace MagicCreator.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Commander commander = db.Commanders.Find(id);
-            db.Commanders.Remove(commander);
-            db.SaveChanges();
+            var service = CreateCommanderSerivces();
+
+            service.DeleteCommander(id);
+
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+
     }
 }

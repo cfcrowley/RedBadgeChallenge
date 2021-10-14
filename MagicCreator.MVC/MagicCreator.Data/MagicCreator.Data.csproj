@@ -65,6 +65,10 @@
     <Compile Include="Migrations\202110132010331_initialmigration.Designer.cs">
       <DependentUpon>202110132010331_initialmigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202110141949384_CardUpdate.cs" />
+    <Compile Include="Migrations\202110141949384_CardUpdate.Designer.cs">
+      <DependentUpon>202110141949384_CardUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Modern.cs" />
     <Compile Include="ModernGame.cs" />
@@ -81,6 +85,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202110132010331_initialmigration.resx">
       <DependentUpon>202110132010331_initialmigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110141949384_CardUpdate.resx">
+      <DependentUpon>202110141949384_CardUpdate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

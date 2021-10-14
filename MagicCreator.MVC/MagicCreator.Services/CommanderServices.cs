@@ -57,8 +57,39 @@ namespace MagicCreator.Services
                     {
                         CommanderId = entity.CommanderId,
                         Name = entity.Name,
-
+                        CardCount = entity.CardCount,
+                        General = entity.General,
+                        DeckStyle = entity.DeckStyle,
+                        AvgRating = new ManaService().CommanderAvg(entity.CommanderId)
                     };
+            }
+        }
+
+        public bool UpdateCommander(CommanderEdit model)
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.Commanders.Single(e => e.CommanderId == model.CommanderId);
+
+                entity.Name = model.Name;
+                entity.CardCount = model.CardCount;
+                entity.General = model.General;
+                entity.DeckStyle = model.DeckStyle;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public bool DeleteCommander(int comId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.Commanders.Single(e => e.CommanderId == comId);
+
+                ctx.Commanders.Remove(entity);
+
+
+                return ctx.SaveChanges() == 1;
             }
         }
     }
