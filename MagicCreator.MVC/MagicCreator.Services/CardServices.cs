@@ -33,6 +33,7 @@ namespace MagicCreator.Services
             {
                 var query = ctx.Cards.Select(e => new CardListItem
                 {
+                    CardId = e.CardId,
                     Name = e.Name,
                     Type = e.Type,
                     ManaValue = e.ManaValue
@@ -54,6 +55,20 @@ namespace MagicCreator.Services
                         Type = entity.Type,
                         ManaValue = entity.ManaValue
                     };
+            }
+        }
+
+        public bool UpdateCard(CardEdit model)
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.Cards.Single(e => e.CardId == model.CardId);
+
+                entity.Name = model.Name;
+                entity.Type = model.Type;
+                entity.ManaValue = model.ManaValue;
+
+                return ctx.SaveChanges() == 1;
             }
         }
     }

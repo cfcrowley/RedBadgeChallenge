@@ -20,7 +20,8 @@ namespace MagicCreator.MVC.Controllers
         // GET : Card
         public ActionResult Index()
         {
-            var model = new CardListItem[0];
+            var service = CreateCardService();
+            var model = service.GetCards();
             return View(model);
         }
 
@@ -30,7 +31,7 @@ namespace MagicCreator.MVC.Controllers
             return View();
         }
 
-        // Post : Song
+        // Post : Card
         [HttpPost]
         [ActionName("Create")]
         [ValidateAntiForgeryToken]
@@ -58,5 +59,42 @@ namespace MagicCreator.MVC.Controllers
             return View(model);
         }
 
+        public ActionResult Edit(int id)
+        {
+            var service = CreateCardService();
+            var detail = service.GetCardById(id);
+            var model =
+                new CardEdit
+                {
+                    CardId = detail.CardId,
+                    Name = detail.Name,
+                    Type = detail.Type,
+                    ManaValue = detail.ManaValue
+                };
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, CardEdit model)
+        {
+            if (!ModelState.IsValid) return View(model);
+
+            if(model.CardId != id)
+            {
+                ModelState.AddModelError("", "ID Mismatch");
+                return View(model);
+            }
+
+            var service = CreateCardService();
+
+            if (service.UpdateCard(model))
+            {
+                return RedirectToAction("Index");
+            }
+
+            ModelState.AddModelError("", "Your note could not be updated.");
+            return View(model);
+        }
     }
 }
