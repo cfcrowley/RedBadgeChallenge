@@ -50,5 +50,13 @@ namespace MagicCreator.MVC.Controllers
             return View(model);
         }
 
+        public ActionResult Details(int id)
+        {
+            var svc = CreateCardService();
+            var model = svc.GetCardById(id);
+
+            return View(model);
+        }
+
     }
 }

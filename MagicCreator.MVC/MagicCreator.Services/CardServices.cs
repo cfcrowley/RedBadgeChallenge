@@ -40,5 +40,21 @@ namespace MagicCreator.Services
                 return query.ToArray();
             }
         }
+
+        public CardDetail GetCardById(int id)
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.Cards.Single(e => e.CardId == id);
+                return
+                    new CardDetail
+                    {
+                        CardId = entity.CardId,
+                        Name = entity.Name,
+                        Type = entity.Type,
+                        ManaValue = entity.ManaValue
+                    };
+            }
+        }
     }
 }
