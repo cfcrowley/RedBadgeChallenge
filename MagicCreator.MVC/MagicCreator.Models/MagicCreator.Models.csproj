@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CardCreate.cs" />
+    <Compile Include="CardDetail.cs" />
     <Compile Include="CardListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
