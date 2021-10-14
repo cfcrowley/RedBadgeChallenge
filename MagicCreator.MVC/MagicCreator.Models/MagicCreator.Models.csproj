@@ -55,6 +55,10 @@
     <Compile Include="Modern\ModernEdit.cs" />
     <Compile Include="Modern\ModernListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Standard\StandardCreate.cs" />
+    <Compile Include="Standard\StandardDetail.cs" />
+    <Compile Include="Standard\StandardEdit.cs" />
+    <Compile Include="Standard\StandardListItem.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
