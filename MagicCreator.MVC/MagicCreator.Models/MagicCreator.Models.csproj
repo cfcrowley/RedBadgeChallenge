@@ -42,11 +42,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CardCreate.cs" />
-    <Compile Include="CardDetail.cs" />
-    <Compile Include="CardEdit.cs" />
-    <Compile Include="CardListItem.cs" />
+    <Compile Include="Card\CardCreate.cs" />
+    <Compile Include="Card\CardDetail.cs" />
+    <Compile Include="Card\CardEdit.cs" />
+    <Compile Include="Card\CardListItem.cs" />
+    <Compile Include="Modern\ModernCreate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
