@@ -20,5 +20,9 @@ namespace MagicCreator.Data
         [Required]
         [Display(Name ="Mana Value")]
         public int ManaValue { get; set; }
+        public int ModernId { get; set; }
+        public int LegacyId { get; set; }
+        public int CommanderId { get; set; }
+        public int StandardId { get; set; }
     }
 }

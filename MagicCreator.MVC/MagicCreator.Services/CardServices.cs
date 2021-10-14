@@ -36,7 +36,11 @@ namespace MagicCreator.Services
                     CardId = e.CardId,
                     Name = e.Name,
                     Type = e.Type,
-                    ManaValue = e.ManaValue
+                    ManaValue = e.ManaValue,
+                    LegacyId = e.LegacyId,
+                    ModernId = e.ModernId,
+                    CommanderId = e.CommanderId,
+                    StandardId = e.StandardId
                 });
                 return query.ToArray();
             }
@@ -53,7 +57,11 @@ namespace MagicCreator.Services
                         CardId = entity.CardId,
                         Name = entity.Name,
                         Type = entity.Type,
-                        ManaValue = entity.ManaValue
+                        ManaValue = entity.ManaValue,
+                        LegacyId = entity.LegacyId,
+                        ModernId = entity.ModernId,
+                        StandardId = entity.StandardId,
+                        CommanderId = entity.StandardId
                     };
             }
         }
@@ -67,6 +75,10 @@ namespace MagicCreator.Services
                 entity.Name = model.Name;
                 entity.Type = model.Type;
                 entity.ManaValue = model.ManaValue;
+                entity.LegacyId = model.LegacyId;
+                entity.ModernId = model.ModernId;
+                entity.CommanderId = model.CommanderId;
+                entity.StandardId = model.StandardId; 
 
                 return ctx.SaveChanges() == 1;
             }

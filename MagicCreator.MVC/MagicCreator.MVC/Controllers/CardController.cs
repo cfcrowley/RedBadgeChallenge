@@ -69,7 +69,11 @@ namespace MagicCreator.MVC.Controllers
                     CardId = detail.CardId,
                     Name = detail.Name,
                     Type = detail.Type,
-                    ManaValue = detail.ManaValue
+                    ManaValue = detail.ManaValue,
+                    LegacyId = detail.LegacyId,
+                    ModernId = detail.ModernId,
+                    CommanderId = detail.CommanderId,
+                    StandardId = detail.StandardId
                 };
             return View(model);
         }

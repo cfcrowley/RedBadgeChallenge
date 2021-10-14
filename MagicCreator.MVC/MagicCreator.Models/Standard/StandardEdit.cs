@@ -14,4 +14,4 @@ namespace MagicCreator.Models.Standard
         public string DeckStyle { get; set; }
     }
 }
-}
+
